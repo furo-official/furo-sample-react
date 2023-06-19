@@ -13,7 +13,7 @@ const Home = () => {
     <FuroProvider
       domain={process.env.REACT_APP_DOMAIN_URL || 'https://auth.furo.one'}
       clientId={pid ? pid : clientId}
-      redirectUri={window.location.origin + `/${pid && pid}`}
+      redirectUri={window.location.origin + `/${pid ? pid : clientId}`}
       apiUrl={process.env.REACT_APP_API_URL || 'https://api.furo.one'}
     >
       <div style={{ margin: 30 }}>
