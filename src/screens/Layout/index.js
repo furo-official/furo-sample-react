@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Layout } from "antd";
+import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import { useFuro } from "furo-react";
@@ -22,6 +23,7 @@ const LayoutWithRoute = ({ auth }) => {
   return (
     <Layout className={styles.container}>
       <Layout className={styles.body}>
+        <Header />
         <Content className={styles.content}>
           {auth ? (
             <RequireAuth>
