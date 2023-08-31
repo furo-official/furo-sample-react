@@ -12,15 +12,15 @@
 $ yarn install
 ```
 
-## 환경 설정
+## 환경설정
 
-[Furo 콘솔](https://console.furo.one/projects)의 [프로젝트 정보] 탭으로 넘어가 다음 두 가지 작업을 진행합니다.
+[Furo 콘솔](https://console.furo.one)에서 [Configuration] - [For Developers] 탭으로 넘어가 다음 두 가지 작업을 진행합니다.
 
-1. `App.js`에서 Furo 콘솔에서 가져온 `Client Id`를 붙여넣습니다.
+1. `App.js`에서 Furo 콘솔에서 가져온 `Client ID`를 붙여넣습니다.
    ```javascript
    const clientId = "YOUR_CLIENT_ID_GOES_HERE";
    ```
-2. 콘솔 입력창의 callbackUri 에 http://localhost:3000 을 입력합니다.
+2. 콘솔 입력창의 `callbackUri` 에 http://localhost:3000 을 입력합니다.
 
 ## 시작
 
