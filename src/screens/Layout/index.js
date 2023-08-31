@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Layout } from "antd";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Outlet } from "react-router-dom";
-import { useFuro } from "furo-react";
+import { Outlet, useParams } from "react-router-dom";
+import { FuroProvider, useFuro } from "furo-react";
 import styles from "../../styles/layout.module.css";
+import { ConfigContext } from "../../contexts/ConfigContext";
 
 const { Content } = Layout;
 
@@ -20,22 +21,31 @@ function RequireAuth({ children }) {
 }
 
 const LayoutWithRoute = ({ auth }) => {
+  const { clientId } = useContext(ConfigContext);
+  const { pid } = useParams();
   return (
-    <Layout className={styles.container}>
-      <Layout className={styles.body}>
-        <Header />
-        <Content className={styles.content}>
-          {auth ? (
-            <RequireAuth>
+    <FuroProvider
+      domain={process.env.REACT_APP_DOMAIN_URL || "https://auth.furo.one"}
+      clientId={pid ? pid : clientId}
+      redirectUri={window.location.origin + `/${pid ? pid : clientId}`}
+      apiUrl={process.env.REACT_APP_API_URL || "https://api.furo.one"}
+    >
+      <Layout className={styles.container}>
+        <Layout className={styles.body}>
+          <Header />
+          <Content className={styles.content}>
+            {auth ? (
+              <RequireAuth>
+                <Outlet />
+              </RequireAuth>
+            ) : (
               <Outlet />
-            </RequireAuth>
-          ) : (
-            <Outlet />
-          )}
-        </Content>
-        <Footer />
+            )}
+          </Content>
+          <Footer />
+        </Layout>
       </Layout>
-    </Layout>
+    </FuroProvider>
   );
 };
 

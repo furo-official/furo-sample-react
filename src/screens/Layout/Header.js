@@ -1,65 +1,64 @@
 import React from "react";
 import styles from "../../styles/layout.module.css";
 
-import { Dropdown, Layout, Space, Menu, Avatar, Spin } from "antd";
-import Paragraph from "antd/lib/typography/Paragraph";
+import { Dropdown, Layout, Avatar, Spin, Space } from "antd";
 import { useFuro } from "furo-react";
+import { UserOutlined, LogoutOutlined } from "@ant-design/icons";
 
 const Header = () => {
   return (
     <Layout.Header className={styles.header}>
       <div className={styles.headerContainer}>
-        <a href="/">
-          <div className={styles.headerLogo}>
-            <img src={process.env.PUBLIC_URL + "/furo_naive.svg"} height={36} />
-            <span>Furo</span>
-          </div>
-        </a>
+        <FuroLogo />
         <Profile />
       </div>
     </Layout.Header>
   );
 };
 
+const FuroLogo = () => {
+  return (
+    <a href="/">
+      <div className={styles.headerLogo}>
+        <img src={process.env.PUBLIC_URL + "/furo_naive.svg"} alt="furo" height={36} />
+        <span>Furo</span>
+      </div>
+    </a>
+  );
+};
+
 const Profile = () => {
-  const { user, loginWithRedirect, logout, isLoading } = useFuro();
+  const { user, logout, isLoading } = useFuro();
   const items = [
     {
       label: (
         <div>
-          <Space direction="horizontal">
-            <Avatar />
-            <Space direction="vertical">
-              <Paragraph>이름</Paragraph>
-              <Paragraph>이메일</Paragraph>
-            </Space>
-          </Space>
+          <LogoutOutlined /> Logout
         </div>
       ),
-      key: "0",
-    },
-    {
-      type: "divider",
+      key: "logout",
+      onClick: logout,
     },
   ];
-
-  console.log(user);
 
   if (isLoading) return <Spin />;
 
   if (user) {
     return (
-      <Dropdown menu={{ items }}>
-        <a onClick={(e) => e.preventDefault()}>
+      <Space direction="horizontal">
+        <span>
+          <b>{user.display_name || user.email.split("@")[0]}</b>님 안녕하세요!
+        </span>
+        <Dropdown menu={{ items }}>
           <div>
-            <Avatar src={user} />
+            <Avatar src={user.profile_url} icon={<UserOutlined />} />
           </div>
-        </a>
-      </Dropdown>
+        </Dropdown>
+      </Space>
     );
-  } else {
-    return <>로그인하삼</>;
   }
+
+  return <>로그인이 필요합니다</>;
 };
 
 export default Header;
