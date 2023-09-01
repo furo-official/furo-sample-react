@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import { Layout } from "antd";
-import Header from "./Header";
-import Footer from "./Footer";
-import { Outlet, useParams } from "react-router-dom";
-import { FuroProvider, useFuro } from "furo-react";
-import styles from "../../styles/layout.module.css";
-import { ConfigContext } from "../../contexts/ConfigContext";
+import React, { useContext, useEffect } from 'react';
+import { Layout } from 'antd';
+import Header from './Header';
+import Footer from './Footer';
+import { Outlet, useParams } from 'react-router-dom';
+import { FuroProvider, useFuro } from 'furo-react';
+import styles from '../../styles/layout.module.css';
+import { ConfigContext } from '../../contexts/ConfigContext';
 
 const { Content } = Layout;
 
@@ -25,10 +25,10 @@ const LayoutWithRoute = ({ auth }) => {
   const { pid } = useParams();
   return (
     <FuroProvider
-      domain={process.env.REACT_APP_DOMAIN_URL || "https://auth.furo.one"}
+      domain={process.env.REACT_APP_DOMAIN_URL || 'https://auth.furo.one'}
       clientId={pid ? pid : clientId}
       redirectUri={window.location.origin + `/${pid ? pid : clientId}`}
-      apiUrl={process.env.REACT_APP_API_URL || "https://api.furo.one"}
+      apiUrl={process.env.REACT_APP_API_URL || 'https://api.furo.one'}
     >
       <Layout className={styles.container}>
         <Layout className={styles.body}>
