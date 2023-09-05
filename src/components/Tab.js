@@ -21,14 +21,12 @@ const Tab = () => {
     const token = await getAccessTokenSilently();
     setToken(token);
     const response = await axios.get(
-      `${
-        process.env.REACT_APP_API_URL || 'https://api.furo.one'
-      }/workspaces/joined/search`,
+      `${process.env.REACT_APP_API_URL || 'https://api.furo.one'}/workspaces/joined/search`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     );
     const list = response.data;
     if (list.length > 0) {
@@ -53,6 +51,6 @@ const Tab = () => {
   };
   if (loading) return null;
   if (!token) return null;
-  return <Tabs defaultActiveKey='1' items={items} onChange={onChange} />;
+  return <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
 };
 export default Tab;
