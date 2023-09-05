@@ -16,13 +16,13 @@ export default function App() {
     <ConfigProvider clientId={clientId}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Layout auth={false} />}>
+          <Route path="/" element={<Layout auth={false} />}>
             <Route index element={<Home />} />
-            <Route path='*' element={<NoMatch />} />
+            <Route path="*" element={<NoMatch />} />
           </Route>
-          <Route path='/:pid' element={<Layout auth={false} />}>
+          <Route path="/:pid" element={<Layout auth={false} />}>
             <Route index element={<Home />} />
-            <Route path='*' element={<NoMatch />} />
+            <Route path="*" element={<NoMatch />} />
           </Route>
         </Routes>
       </BrowserRouter>

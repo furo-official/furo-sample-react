@@ -6,7 +6,7 @@ import { useFuro } from 'furo-react';
 import { WarningOutlined } from '@ant-design/icons';
 import styles from '../styles/board.module.css';
 import { ConfigContext } from '../contexts/ConfigContext';
-import { ImportOutlined } from '@ant-design/icons';
+import { LogoutOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
 
@@ -18,7 +18,7 @@ const Board = () => {
     return (
       <div className={styles.container}>
         <div className={styles.code} style={{ alignItems: 'center' }}>
-          <Spin tip='Loading' size='large' />
+          <Spin tip="Loading" size="large" />
         </div>
       </div>
     );
@@ -27,38 +27,29 @@ const Board = () => {
       <div className={styles.code}>
         {user ? (
           <>
-            <SyntaxHighlighter
-              language='javascript'
-              style={coldarkDark}
-              wrapLines={true}
-              wrapLongLines={true}
-            >
+            <SyntaxHighlighter language="javascript" style={coldarkDark} wrapLines={true} wrapLongLines={true}>
               {page === 'user'
                 ? '// Logged in user Info\n' + JSON.stringify(user, null, '\t')
-                : `// user's joined Info\n` +
-                  JSON.stringify(workspaces, null, '\t')}
+                : `// user's joined Info\n` + JSON.stringify(workspaces, null, '\t')}
             </SyntaxHighlighter>
 
             <div className={styles.button_wrapper}>
               <Tooltip title={'로그아웃'}>
-                <ImportOutlined
-                  className={styles.icon_logout}
-                  onClick={logout}
-                />
+                <LogoutOutlined className={styles.icon_logout} onClick={logout} />
               </Tooltip>
             </div>
           </>
         ) : (
           <>
             {!isLoading && !hasClientId && (
-              <Text type='danger' className={styles.warning}>
+              <Text type="danger" className={styles.warning}>
                 <WarningOutlined className={styles.icon_warning} />
                 <Tooltip
                   title={
                     <a
-                      href='https://github.com/furo-official/furo-sample-react#%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95'
+                      href="https://github.com/furo-official/furo-sample-react#%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95"
                       target={'_blank'}
-                      rel='noreferrer'
+                      rel="noreferrer"
                     >
                       설정하러 가기
                     </a>
@@ -71,9 +62,9 @@ const Board = () => {
               </Text>
             )}
             <Button
-              type='primary'
-              size='large'
-              shape='round'
+              type="primary"
+              size="large"
+              shape="round"
               onClick={loginWithRedirect}
               disabled={!hasClientId}
               style={{ alignSelf: 'center' }}
