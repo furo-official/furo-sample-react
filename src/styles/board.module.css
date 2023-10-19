@@ -7,7 +7,7 @@
 }
 
 .code {
-  background-color: #111b27;
+  background-color: #1f1f1f;
   width: 100%;
   padding: 40px 30px;
   border-radius: 15px;
@@ -16,7 +16,7 @@
   align-items: flex-start;
   flex-direction: column;
   min-height: 30vh;
-  overflow: scroll;
+  overflow: hidden;
   overflow-y: hidden;
 }
 
@@ -38,4 +38,41 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
+}
+
+.login {
+  background-color: #3e70fa;
+  color: #fff;
+  padding: 5px 30px;
+  border-radius: 6px;
+  font-size: 1.5em;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: center;
+}
+
+.login:disabled {
+  background-color: #3e70fa;
+  color: #fff;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.login:hover {
+  background-color: #2849a4;
+  color: #fff;
+}
+
+.clientId {
+  align-self: center;
+  margin-bottom: 8px;
+}
+
+pre {
+  background-color: #1f1f1f !important;
+  font-size: 0.8rem;
+  width: 100% !important;
+  word-break: break-all !important;
+  overflow: hidden !important;
+  word-wrap: break-word !important;
 }
