@@ -9,7 +9,7 @@ import NoMatch from './screens/NoMatch';
 import Home from './screens/Home';
 
 export default function App() {
-  /* Furo 콘솔에서 가져온 프로젝트의 client id */
+  /* Insert client ID from Your Furo console */
   const clientId = 'YOUR_CLIENT_ID_GOES_HERE';
 
   return (
