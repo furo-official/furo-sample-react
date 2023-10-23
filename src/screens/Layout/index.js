@@ -21,8 +21,12 @@ function RequireAuth({ children }) {
 }
 
 const LayoutWithRoute = ({ auth }) => {
-  const { clientId } = useContext(ConfigContext);
+  const { clientId, setClientId } = useContext(ConfigContext);
   const { pid } = useParams();
+  if (pid) {
+    setClientId(pid);
+  }
+
   return (
     <FuroProvider
       domain={process.env.REACT_APP_DOMAIN_URL || 'https://auth.furo.one'}
