@@ -44,7 +44,6 @@ const Tab = () => {
       await getWorkspace();
       setLoading(false);
     })();
-    // eslint-disable-next-line
   }, []);
 
   const onChange = (key) => {

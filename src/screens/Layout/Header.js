@@ -16,13 +16,11 @@ const Header = () => {
   );
 };
 
-const furoLogo = 'https://res.cloudinary.com/dsllzosoi/image/upload/v1695004534/furo-logo-square_slejhp.png';
-
 const FuroLogo = () => {
   return (
     <a href="/">
       <div className={styles.headerLogo}>
-        <img src={furoLogo} alt="furo" height={36} />
+        <img src={process.env.PUBLIC_URL + '/furo_naive.svg'} alt="furo" height={36} />
         <span>Furo</span>
       </div>
     </a>
@@ -48,19 +46,19 @@ const Profile = () => {
   if (user) {
     return (
       <Space direction="horizontal">
-        <div style={{ fontSize: '1.1rem', lineHeight: 1.4 }}>
-          <b>{user.display_name || user.email.split('@')[0]}</b>
-        </div>
+        <span>
+          <b>{user.display_name || user.email.split('@')[0]}</b>님 안녕하세요!
+        </span>
         <Dropdown menu={{ items }}>
-          <div style={{ marginBottom: '5px' }}>
-            <Avatar src={user.profile_url || furoLogo} icon={<UserOutlined />} />
+          <div>
+            <Avatar src={user.profile_url} icon={<UserOutlined />} />
           </div>
         </Dropdown>
       </Space>
     );
   }
 
-  return <></>;
+  return <>로그인이 필요합니다</>;
 };
 
 export default Header;
