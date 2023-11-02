@@ -10,7 +10,7 @@ import Home from './screens/Home';
 
 export default function App() {
   /* Furo 콘솔에서 가져온 프로젝트의 client id */
-  const clientId = 'YOUR_CLIENT_ID_GOES_HERE';
+  const clientId = process.env.REACT_APP_CLIENT_ID || 'YOUR_CLIENT_ID_GOES_HERE';
 
   return (
     <ConfigProvider clientId={clientId}>
